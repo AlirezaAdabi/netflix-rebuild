@@ -48,12 +48,13 @@ const Home = ({
         </section>
       </main>
     </div>
+    
   );
 };
 
 export default Home;
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const [
     netflixOriginals,
     trendingNow,
@@ -85,5 +86,6 @@ export const getServerSideProps = async () => {
       romanceMovies: romanceMovies.data.results,
       documentaries: documentaries.data.results,
     },
+    revalidate: 600
   };
 };

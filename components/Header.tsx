@@ -22,7 +22,7 @@ const Header = () => {
     <header className={`${isScrolled && "bg-[#141414]"}`}>
       <div className=" flex items-center space-x-2 md:space-x-10">
         <img
-          src="https://rb.gy/ulxxee"
+          src={'/assets/Logo.svg'}
           width={100}
           height={100}
           className="cursor-pointer object-contain"
@@ -41,7 +41,7 @@ const Header = () => {
         <BellIcon className=" w-6 h-6" />
         <Link href="/account">
           <img
-            src="https://rb.gy/g1pwyx"
+            src={'/assets/Account.png'}
             alt=""
             className="cursor-pointer rounded"
           />

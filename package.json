@@ -8,9 +8,11 @@
   "dependencies": {
     "@heroicons/react": "^1.0.6",
     "axios": "^0.27.2",
+    "firebase": "^9.9.0",
     "next": "latest",
     "react": "18.1.0",
     "react-dom": "18.1.0",
+    "react-hook-form": "^7.33.1",
     "react-icons": "^4.4.0",
     "tailwind-scrollbar-hide": "^1.1.7",
     "tailwindcss-textshadow": "^2.1.3"
