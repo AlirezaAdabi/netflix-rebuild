@@ -77,7 +77,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       router.push("/");
       setLoading(false);
     } catch (error) {
-      alert(error.message);
+    //   alert(error.message);
     } finally {
       setLoading(false);
     }
@@ -96,7 +96,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       router.push("/");
       setLoading(false);
     } catch (error) {
-      alert(error.message);
+    //   alert(error.message);
     } finally {
       setLoading(false);
     }
@@ -108,7 +108,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       await signOut(auth);
       setUser(null);
     } catch (error) {
-      alert(error.message);
+    //   alert(error.message);
     } finally {
       setLoading(false);
     }
