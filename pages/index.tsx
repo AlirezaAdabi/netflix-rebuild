@@ -5,6 +5,10 @@ import Header from "../components/Header";
 import Row from "../components/Row";
 import { Movie } from "../typing";
 import requests from "../utils/requests";
+import useAuth from "../hooks/useAuth";
+import { useRecoilValue } from "recoil";
+import { modalState } from "../atoms/modalAtom";
+import Modal from "../components/Modal";
 
 interface Props {
   netflixOriginals: Movie[];
@@ -27,7 +31,10 @@ const Home = ({
   topRated,
   trendingNow,
 }: Props) => {
-  
+  const { loading } = useAuth();
+  const showModal = useRecoilValue(modalState);
+
+  if (loading) return null;
   return (
     <div className=" relative h-screen bg-gradient-to-b lg:h-[140vh]">
       <Head>
@@ -47,8 +54,8 @@ const Home = ({
           <Row title="Documentaries" movies={documentaries} />
         </section>
       </main>
+      {showModal && <Modal />}
     </div>
-    
   );
 };
 
@@ -74,7 +81,7 @@ export const getStaticProps = async () => {
     axios(requests.fetchRomanceMovies),
     axios(requests.fetchDocumentaries),
   ]);
-  
+
   return {
     props: {
       netflixOriginals: netflixOriginals.data.results,
@@ -86,6 +93,6 @@ export const getStaticProps = async () => {
       romanceMovies: romanceMovies.data.results,
       documentaries: documentaries.data.results,
     },
-    revalidate: 600
+    revalidate: 600,
   };
 };

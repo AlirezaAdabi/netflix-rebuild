@@ -31,3 +31,4 @@ export interface Genre {
       | 'Trailer'
       | 'Teaser'
   }
+

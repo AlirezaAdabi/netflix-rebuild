@@ -5,16 +5,11 @@ import {
   signOut,
   User,
 } from "firebase/auth";
-
 import { useRouter } from "next/router";
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
-import { auth } from "../firabase";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { auth } from "../lib/firebase";
+
+
 
 interface IAuth {
   user: User | null;
@@ -53,7 +48,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
           setUser(user);
           setLoading(false);
         } else {
-          // Not logged in...
+          // Not logged in...`
           setUser(null);
           setLoading(true);
           router.push("/login");
@@ -76,8 +71,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       setUser(userCredential.user);
       router.push("/");
       setLoading(false);
-    } catch (error) {
-    //   alert(error.message);
+    } catch (error: Error | any) {
+      alert(error.message);
     } finally {
       setLoading(false);
     }
@@ -95,8 +90,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       setUser(userCredential.user);
       router.push("/");
       setLoading(false);
-    } catch (error) {
-    //   alert(error.message);
+    } catch (error: Error | any) {
+      alert(error.message);
     } finally {
       setLoading(false);
     }
@@ -107,8 +102,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     try {
       await signOut(auth);
       setUser(null);
-    } catch (error) {
-    //   alert(error.message);
+    } catch (error: Error | any) {
+      alert(error.message);
     } finally {
       setLoading(false);
     }
