@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { baseUrl } from "../constants/movie";
-import { Movie } from "../typing";
+import { Movie } from "../types/types";
 import { FaPlay } from "react-icons/fa";
 import { InformationCircleIcon } from "@heroicons/react/solid";
 import { useRecoilState } from "recoil";

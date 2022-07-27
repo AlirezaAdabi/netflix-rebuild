@@ -12,7 +12,7 @@ import { FaPlay } from "react-icons/fa";
 import ReactPlayer from "react-player/lazy";
 import { useRecoilState } from "recoil";
 import { modalState, movieState } from "../atoms/modalAtom";
-import { Element, Genre } from "../typing";
+import { Element, Genre } from "../types/types";
 
 const Modal = () => {
   const [showModal, setShowModal] = useRecoilState(modalState);

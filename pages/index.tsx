@@ -3,12 +3,13 @@ import Head from "next/head";
 import Banner from "../components/Banner";
 import Header from "../components/Header";
 import Row from "../components/Row";
-import { Movie } from "../typing";
+import { Movie } from "../types/types";
 import requests from "../utils/requests";
 import useAuth from "../hooks/useAuth";
 import { useRecoilValue } from "recoil";
 import { modalState } from "../atoms/modalAtom";
 import Modal from "../components/Modal";
+import Plans from "../components/Plans";
 
 interface Props {
   netflixOriginals: Movie[];
@@ -33,8 +34,10 @@ const Home = ({
 }: Props) => {
   const { loading } = useAuth();
   const showModal = useRecoilValue(modalState);
+  const subscription = false;
+  if (loading || subscription === null) return null;
 
-  if (loading) return null;
+  if (!subscription) return <Plans/>
   return (
     <div
       className={`relative h-screen bg-gradient-to-b lg:h-[140vh] ${
