@@ -1,6 +1,6 @@
 import { CheckIcon } from "@heroicons/react/outline";
 import React from "react";
-import products from "../lib/plans";
+import products from "../constants/plans";
 
 interface Props {
   selectedPlan?: number;

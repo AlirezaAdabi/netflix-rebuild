@@ -24,4 +24,3 @@ Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&ut
 
 
 See Demo Here : https://netflix-rebuild-five.vercel.app/
-Project is not finish yet ...

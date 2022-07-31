@@ -2,7 +2,7 @@
 import { initializeApp, getApp, getApps } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth"; // TODO: Add SDKs for Firebase products that you want to use
-
+import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -15,8 +15,9 @@ const firebaseConfig = {
 };
 
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
-// const db = getFirestore();
+const db = getFirestore();
+const database = getDatabase();
 const auth = getAuth();
 
 export default app;
-export { auth };
+export { auth, database, db };

@@ -7,9 +7,11 @@ import { Movie } from "../types/types";
 import requests from "../utils/requests";
 import useAuth from "../hooks/useAuth";
 import { useRecoilValue } from "recoil";
-import { modalState } from "../atoms/modalAtom";
+import { modalState, movieState } from "../atoms/modalAtom";
 import Modal from "../components/Modal";
 import Plans from "../components/Plans";
+import useSubscription from "../hooks/useSubscription";
+import useList from "../hooks/useList";
 
 interface Props {
   netflixOriginals: Movie[];
@@ -32,12 +34,15 @@ const Home = ({
   topRated,
   trendingNow,
 }: Props) => {
-  const { loading } = useAuth();
+  const { loading, user } = useAuth();
   const showModal = useRecoilValue(modalState);
-  const subscription = false;
+  const subscription = useSubscription(user);
+  const movie = useRecoilValue(movieState);
+  const list = useList(user?.uid);
+
   if (loading || subscription === null) return null;
 
-  if (!subscription) return <Plans/>
+  if (!subscription) return <Plans />;
   return (
     <div
       className={`relative h-screen bg-gradient-to-b lg:h-[140vh] ${
@@ -46,7 +51,7 @@ const Home = ({
     >
       <Head>
         <title>Home - Netflix</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/netflix.ico" />
       </Head>
       <Header />
       <main className="relative pl-4 lg:pl-20 pb-24 lg:space-y-24">
@@ -55,6 +60,7 @@ const Home = ({
           <Row title="Trending Now" movies={trendingNow} />
           <Row title="Top Rated" movies={topRated} />
           <Row title="Action Thrillers" movies={actionMovies} />
+          {list.length > 0 && <Row title="My List" movies={list} />}
           <Row title="Comedies" movies={comedyMovies} />
           <Row title="Scary Movies" movies={horrorMovies} />
           <Row title="Romance Movies" movies={romanceMovies} />
